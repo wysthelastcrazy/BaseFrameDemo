@@ -33,18 +33,20 @@ public class RetrofitUtils {
 
     }
 
-    public static Retrofit newInstence() {
-        mRetrofit = null;
-        OkHttpClient client = getHttpClient();
+    public static Retrofit newInstance() {
+        if (mRetrofit==null) {
+//        mRetrofit = null;
+            OkHttpClient client = getHttpClient();
 //初始化一个client,不然retrofit会自己默认添加一个
 //        client.setReadTimeout(READ_TIMEOUT, TimeUnit.MINUTES);//设置读取时间为一分钟
 //        client.setConnectTimeout(CONN_TIMEOUT, TimeUnit.SECONDS);//设置连接时间为12s
-        mRetrofit = new Retrofit.Builder()
-                .client(client)//添加一个client,不然retrofit会自己默认添加一个
-                .baseUrl(GlobalField.BASEURL)
-                .addConverterFactory(GsonConverterFactory.create())
-                .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
-                .build();
+            mRetrofit = new Retrofit.Builder()
+                    .client(client)//添加一个client,不然retrofit会自己默认添加一个
+                    .baseUrl(GlobalField.BASEURL)
+                    .addConverterFactory(GsonConverterFactory.create())
+                    .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
+                    .build();
+        }
         return mRetrofit;
     }
 
@@ -55,7 +57,8 @@ public class RetrofitUtils {
     private static OkHttpClient getHttpClient(){
         OkHttpClient okHttpClient=new OkHttpClient.Builder()
                 .addInterceptor(new CommonInterceptor())
-                .connectTimeout(15, TimeUnit.SECONDS)
+                .connectTimeout(CONN_TIMEOUT, TimeUnit.SECONDS)
+                .readTimeout(READ_TIMEOUT,TimeUnit.SECONDS)
                 .sslSocketFactory(createSSLSocketFactory())
                 .hostnameVerifier(new HostnameVerifier() {
                     @Override
