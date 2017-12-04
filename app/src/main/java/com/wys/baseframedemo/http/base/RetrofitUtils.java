@@ -1,7 +1,6 @@
 package com.wys.baseframedemo.http.base;
 
-import com.wys.baseframedemo.common.GlobalField;
-import com.wys.baseframedemo.http.base.CommonInterceptor;
+import com.wys.baseframedemo.common.Common;
 
 import java.security.SecureRandom;
 import java.security.cert.CertificateException;
@@ -39,7 +38,7 @@ public class RetrofitUtils {
             //初始化一个client,不然retrofit会自己默认添加一个
             mRetrofit = new Retrofit.Builder()
                     .client(client)//添加一个client,不然retrofit会自己默认添加一个
-                    .baseUrl(GlobalField.BASEURL)
+                    .baseUrl(Common.BASEURL)
                     .addConverterFactory(GsonConverterFactory.create())
                     .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
                     .build();

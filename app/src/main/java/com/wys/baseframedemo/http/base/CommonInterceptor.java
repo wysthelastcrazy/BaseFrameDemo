@@ -27,28 +27,16 @@ public class CommonInterceptor implements Interceptor {
         Request newRequest = oldRequest.newBuilder()
                 .method(oldRequest.method(), oldRequest.body())
                 .url(authorizedUrlBuilder.build())
-                .addHeader("Cookie", getLoginStatus())
+                .addHeader("Cookie", getCookie())
                 .build();
 
         return chain.proceed(newRequest);
     }
     /***
-     * 登录身份信息
+     * cookie
      * @return
      */
-    public static String getLoginStatus(){
-//        String cookie = LoginController.getInstance().getCookie();
-//        if(MyLog.isDebugable()){
-//            MyLog.debug(TAG,"[getLoginStatus]" + " cookie:" + cookie);
-//        }
-//        //现进行整体编码处理
-//        if (!TextUtils.isEmpty(cookie)){
-//            try {
-//                cookie= URLEncoder.encode(cookie, "UTF-8");
-//            } catch (UnsupportedEncodingException e) {
-//                e.printStackTrace();
-//            }
-//        }
-        return "uid=3;token=212;";
+    public static String getCookie(){
+        return "";
     }
 }

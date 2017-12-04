@@ -1,4 +1,4 @@
-package com.wys.common;
+package com.wys.baseframedemo.utils;
 
 import android.text.TextUtils;
 
