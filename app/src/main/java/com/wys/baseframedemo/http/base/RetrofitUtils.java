@@ -33,13 +33,10 @@ public class RetrofitUtils {
 
     }
 
-    public static Retrofit newInstance() {
+    public static Retrofit newInstence() {
         if (mRetrofit==null) {
-//        mRetrofit = null;
             OkHttpClient client = getHttpClient();
-//初始化一个client,不然retrofit会自己默认添加一个
-//        client.setReadTimeout(READ_TIMEOUT, TimeUnit.MINUTES);//设置读取时间为一分钟
-//        client.setConnectTimeout(CONN_TIMEOUT, TimeUnit.SECONDS);//设置连接时间为12s
+            //初始化一个client,不然retrofit会自己默认添加一个
             mRetrofit = new Retrofit.Builder()
                     .client(client)//添加一个client,不然retrofit会自己默认添加一个
                     .baseUrl(GlobalField.BASEURL)
@@ -83,7 +80,7 @@ public class RetrofitUtils {
 
         return ssfFactory;
     }
-    public static class TrustAllCerts implements X509TrustManager {
+    private static class TrustAllCerts implements X509TrustManager {
 
         @Override
         public void checkClientTrusted(java.security.cert.X509Certificate[] chain, String authType) throws CertificateException {

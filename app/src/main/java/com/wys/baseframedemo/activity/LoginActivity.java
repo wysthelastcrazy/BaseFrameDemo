@@ -14,21 +14,22 @@ import com.wys.baseframedemo.contract.LoginContract;
 import com.wys.baseframedemo.contract.presenters.LoginPresenter;
 import com.wys.baseframedemo.utils.ToastUtils;
 
+import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.InjectView;
 import butterknife.OnClick;
+
 public class LoginActivity extends BaseActivity implements LoginContract.ILoginView {
 
 
-    @InjectView(R.id.et_login_userName)
+    @BindView(R.id.et_login_userName)
     EditText etLoginUserName;
-    @InjectView(R.id.et_login_pwd)
+    @BindView(R.id.et_login_pwd)
     EditText etLoginPwd;
-    @InjectView(R.id.btn_login)
+    @BindView(R.id.btn_login)
     Button btnLogin;
-    @InjectView(R.id.pb_progress)
+    @BindView(R.id.pb_progress)
     ProgressBar pbProgress;
-    @InjectView(R.id.tv_title)
+    @BindView(R.id.tv_title)
     TextView tvTitle;
     private LoginPresenter mLoginPresenter;
 
@@ -36,7 +37,7 @@ public class LoginActivity extends BaseActivity implements LoginContract.ILoginV
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        ButterKnife.inject(this);
+        ButterKnife.bind(this);
         tvTitle.setText("用户登录");
         mLoginPresenter = new LoginPresenter(this);
     }
