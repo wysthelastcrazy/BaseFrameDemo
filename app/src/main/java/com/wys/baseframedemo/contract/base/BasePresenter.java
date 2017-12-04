@@ -5,7 +5,7 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.wys.baseframedemo.http.APIService;
 import com.wys.baseframedemo.http.base.RetrofitUtils;
-import com.wys.common.MD5;
+import com.wys.baseframedemo.utils.MD5;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;

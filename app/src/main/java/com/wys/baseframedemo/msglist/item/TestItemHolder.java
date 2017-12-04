@@ -14,27 +14,36 @@ import android.widget.TextView;
 import com.wys.baseframedemo.R;
 import com.wys.baseframedemo.msglist.base.BaseViewHolder;
 
+import butterknife.BindView;
+
 /**
  * Created by yas on 2017/12/1.
  */
 
-public class TestItemHolder extends BaseViewHolder<String>{
+public class TestItemHolder extends BaseViewHolder<String> {
+    @BindView(R.id.look_detail)
+    TextView lookDetail;
+    @BindView(R.id.icon1)
+    ImageView icon1;
+    @BindView(R.id.layer1)
+    LinearLayout layer1;
+    @BindView(R.id.tv_detail)
+    TextView tvDetail;
+    @BindView(R.id.layer2)
+    LinearLayout layer2;
     private int mLayoutHeight = 0;  //动画执行的padding高度
     private boolean isOpen = false; //是否开启状态
-    private TextView lookDetail;
-    private LinearLayout layer2;
-    private ImageView icon1;
-    private TextView tvDetail;
+
     public TestItemHolder(Context mContext, ViewGroup parent) {
         super(mContext, parent, R.layout.layout_look_detail);
     }
 
     @Override
     public void initView() {
-        lookDetail =  itemView.findViewById(R.id.look_detail);
-        layer2 =  itemView.findViewById(R.id.layer2);
-        icon1 =  itemView.findViewById(R.id.icon1);
-        tvDetail=  itemView.findViewById(R.id.tv_detail);
+        lookDetail = itemView.findViewById(R.id.look_detail);
+        layer2 = itemView.findViewById(R.id.layer2);
+        icon1 = itemView.findViewById(R.id.icon1);
+        tvDetail = itemView.findViewById(R.id.tv_detail);
         initShowHide();
     }
 
@@ -42,6 +51,7 @@ public class TestItemHolder extends BaseViewHolder<String>{
     public void setMsg(String s) {
         tvDetail.setText(s);
     }
+
     /**
      * 展开收起 执行动画
      */
@@ -55,7 +65,7 @@ public class TestItemHolder extends BaseViewHolder<String>{
                 mLayoutHeight = layer2.getHeight();
                 System.out.println("得到的高度：" + mLayoutHeight);
                 //隐藏当前控件
-                layer2.setPadding(0,-mLayoutHeight,0,0);
+                layer2.setPadding(0, -mLayoutHeight, 0, 0);
             }
         });
 
@@ -64,10 +74,10 @@ public class TestItemHolder extends BaseViewHolder<String>{
             @Override
             public void onClick(View view) {
                 ValueAnimator valueAnimator = new ValueAnimator();
-                if (isOpen){
+                if (isOpen) {
                     valueAnimator.setIntValues(0, -mLayoutHeight);
                     lookDetail.setText("查看详情");
-                }else {
+                } else {
                     valueAnimator.setIntValues(-mLayoutHeight, 0);
                     lookDetail.setText("收起");
                 }
@@ -76,7 +86,7 @@ public class TestItemHolder extends BaseViewHolder<String>{
                     @Override
                     public void onAnimationUpdate(ValueAnimator animator) {
                         int value = (int) animator.getAnimatedValue();
-                        layer2.setPadding(0,value,0,0);
+                        layer2.setPadding(0, value, 0, 0);
                     }
                 });
                 //动画执行中监听
