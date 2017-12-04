@@ -4,9 +4,63 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-    <!--<include layout="@layout/layout_look_detail" />-->
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/mRecyclerView"
+    <FrameLayout
+        android:id="@+id/content"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+    </FrameLayout>
+
+    <RadioGroup
+        android:id="@+id/rg_tabs"
+        android:layout_width="match_parent"
+        android:layout_height="49dp"
+        android:background="@color/common_white"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:id="@+id/rb_my_message"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@color/translucent"
+            android:button="@null"
+            android:checked="true"
+            android:drawableTop="@drawable/btn_my_message"
+            android:gravity="center_horizontal"
+            android:paddingTop="7dp"
+            android:text="tab1"
+            android:textColor="@drawable/color_txt_tab_selector"
+            android:textSize="11sp" />
+
+        <RadioButton
+            android:id="@+id/rb_my_task"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@color/translucent"
+            android:button="@null"
+            android:drawableTop="@drawable/btn_my_task"
+            android:gravity="center_horizontal"
+            android:paddingTop="7dp"
+            android:text="tab2"
+            android:textColor="@drawable/color_txt_tab_selector"
+            android:textSize="11sp" />
+
+        <RadioButton
+            android:id="@+id/rb_personal_center"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@color/translucent"
+            android:button="@null"
+            android:drawableTop="@drawable/btn_personal_center"
+            android:gravity="center_horizontal"
+            android:paddingTop="7dp"
+            android:text="tab3"
+            android:textColor="@drawable/color_txt_tab_selector"
+            android:textSize="11sp" />
+
+    </RadioGroup>
 </LinearLayout>

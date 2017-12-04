@@ -15,7 +15,6 @@ import com.wys.baseframedemo.contract.presenters.LoginPresenter;
 import com.wys.baseframedemo.utils.ToastUtils;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 public class LoginActivity extends BaseActivity implements LoginContract.ILoginView {
@@ -34,12 +33,13 @@ public class LoginActivity extends BaseActivity implements LoginContract.ILoginV
     private LoginPresenter mLoginPresenter;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
-        ButterKnife.bind(this);
-        tvTitle.setText("用户登录");
-        mLoginPresenter = new LoginPresenter(this);
+    protected int getLayoutRes() {
+        return R.layout.activity_login;
+    }
+
+    @Override
+    protected void initLayout() {
+        mLoginPresenter=new LoginPresenter(this);
     }
 
 
