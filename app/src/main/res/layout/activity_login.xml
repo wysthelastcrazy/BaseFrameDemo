@@ -8,7 +8,7 @@
 
     <include layout="@layout/custom_actionbar" />
 
-    <com.wys.baseframedemo.widget.ClearEditText
+    <com.beta.MoneyballMaster.widget.ClearEditText
         android:id="@+id/et_login_userName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -16,7 +16,7 @@
         android:drawableRight="@mipmap/search_clear_normal"
         android:hint="请输入用户名" />
 
-    <com.wys.baseframedemo.widget.ClearEditText
+    <com.beta.MoneyballMaster.widget.ClearEditText
         android:id="@+id/et_login_pwd"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
