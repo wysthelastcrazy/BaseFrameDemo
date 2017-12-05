@@ -1,7 +1,5 @@
 package com.beta.MoneyballMaster.activity;
 
-import android.graphics.Color;
-import android.os.Bundle;
 import android.widget.FrameLayout;
 
 import com.ashokvarma.bottomnavigation.BottomNavigationBar;
@@ -10,7 +8,6 @@ import com.beta.MoneyballMaster.R;
 import com.beta.MoneyballMaster.activity.base.BaseActivity;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 
 
 public class MainActivity extends BaseActivity {
@@ -37,10 +34,4 @@ public class MainActivity extends BaseActivity {
                 .initialise();
     }
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        // TODO: add setContentView(...) invocation
-        ButterKnife.bind(this);
-    }
 }

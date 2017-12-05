@@ -12,8 +12,8 @@
     </dimen><!-- 6(Top padding) - 12/2(extra padding due to badges) = 0 -->
     <dimen name="shifting_height_top_padding_inactive">20dp
     </dimen><!-- 56(total) - 24(icon) - 16(bottom padding inactive) = 16 ||| 16 - 12/2(extra padding due to badges)  = 10-->
-    <dimen name="shifting_label">13sp</dimen>
-    <dimen name="shifting_icon_grid">20dp</dimen>
+    <dimen name="shifting_label">14sp</dimen>
+    <dimen name="shifting_icon_grid">22dp</dimen>
     <dimen name="shifting_icon_badge_grid_height">30dp</dimen>
     <dimen name="shifting_icon_badge_grid_width">42dp</dimen>
 

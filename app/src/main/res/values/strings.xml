@@ -1,9 +1,9 @@
 <resources>
-    <string name="app_name">魔球大师</string>
+    <string name="app_name">retrofitDemo</string>
 
     <!--主页tab-->
-    <string name="tab_guide">指导</string>
-    <string name="tab_score">比分</string>
-    <string name="tab_data">数据</string>
-    <string name="tab_mine">我的</string>
+    <string name="tab_guide">tab1</string>
+    <string name="tab_score">tab2</string>
+    <string name="tab_data">tab3</string>
+    <string name="tab_mine">tab4</string>
 </resources>
