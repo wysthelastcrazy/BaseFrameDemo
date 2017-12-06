@@ -1,6 +1,9 @@
 package com.beta.MoneyballMaster.contract.base;
 import android.text.TextUtils;
 
+import com.beta.MoneyballMaster.common.MConfiger;
+import com.beta.MoneyballMaster.utils.DeviceUtil;
+import com.beta.MoneyballMaster.utils.MyLog;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.beta.MoneyballMaster.http.APIService;
@@ -21,6 +24,8 @@ import rx.Subscriber;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
 import rx.subscriptions.CompositeSubscription;
+
+import static android.content.ContentValues.TAG;
 
 /**
  * ============================================================
@@ -81,17 +86,9 @@ public class BasePresenter<V> implements IBasePresenter<V> {
      * @return
      */
     protected final String getPostJavaParams(Map<String, Object> map) {
-
-        String sign = getSignParam(map);
-        if(!TextUtils.isEmpty(sign)) {
-            map.put("sign", sign);
-        }
-        if (map == null) {
-            map = new HashMap<>();
-        }
+        map=addCommonParams(map);
         if (map != null) {
             //添加时间戳
-            map.put("timestamp", System.currentTimeMillis());
             Gson gson = new Gson();
             Type type = new TypeToken<Map<String, Object>>() {
             }.getType();
@@ -100,6 +97,41 @@ public class BasePresenter<V> implements IBasePresenter<V> {
         } else {
             return "";
         }
+    }
+
+    /**
+     * 公共参数添加
+     * @param map
+     * @return
+     */
+    private Map<String, Object> addCommonParams(Map<String, Object> map) {
+        if (map == null) {
+            map = new HashMap<>();
+        }
+        String sign= getSignParam(map);
+        if (!TextUtils.isEmpty(sign)) {
+            map.put("sign", sign);
+        }
+        //添加fromType
+        map.put("fromType", 13);
+        //添加时间戳
+        map.put("timestamp", System.currentTimeMillis() + "");
+        //添加渠道号
+        map.put("channel", MConfiger.CHANNEL_ID);
+        //添加设备号
+        String strIMEI = DeviceUtil.getIMEI();
+        if (!TextUtils.isEmpty(strIMEI)) {
+            map.put("deviceSn", strIMEI);
+        }
+        //添加请求ip
+        String deviceIp = DeviceUtil.getHostIP();
+        if (!TextUtils.isEmpty(deviceIp)) {
+            map.put("deviceIp", deviceIp);
+        }
+//
+//        String deviceGps = LBSController.getInstance().getLocInfo();
+//        map.put("deviceGps", deviceGps);
+        return map;
     }
     /**
      * 获取sign签名验证
