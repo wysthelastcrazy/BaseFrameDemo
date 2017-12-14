@@ -1,5 +1,6 @@
 package com.beta.MoneyballMaster.contract.presenters;
 
+import com.beta.MoneyballMaster.contract.models.LoginModel;
 import com.beta.MoneyballMaster.entity.UserInfo;
 import com.beta.MoneyballMaster.contract.LoginContract;
 import com.beta.MoneyballMaster.contract.base.BasePresenter;
@@ -12,23 +13,21 @@ import java.util.Map;
  * Created by Administrator on 2016/7/22.
  */
 public class LoginPresenter extends BasePresenter<LoginContract.ILoginView> implements LoginContract.ILoginPresenter {
-
+    private LoginModel loginModel;
 
     public LoginPresenter(LoginContract.ILoginView mView) {
        attach(mView);
+        loginModel=new LoginModel();
     }
     /**
      * 登录
      */
     @Override
     public void login(String userName,String pwd) {
-        Map<String,Object> params=new HashMap<>();
-        params.put("userName",userName);
-        params.put("password",pwd);
         mView.showProgress();
-        addSubscription(apiStores.userLogin(creatRequestBody(params)),new SubscriberCallBack<UserInfo>(new ApiCallBack<UserInfo>() {
+        loginModel.login(userName, pwd, new ApiCallBack<UserInfo>() {
             @Override
-            public void onSuccessful(UserInfo tokenResult) {
+            public void onSuccessful(UserInfo userInfo) {
                 mView.toMain();
             }
 
@@ -41,6 +40,11 @@ public class LoginPresenter extends BasePresenter<LoginContract.ILoginView> impl
             public void onCompleted() {
                 mView.hideProgress();
             }
-        }));
+        });
+    }
+
+    @Override
+    public void onUnsubscribe() {
+        loginModel.onUnsubscribe();
     }
 }

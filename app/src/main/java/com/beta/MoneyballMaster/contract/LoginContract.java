@@ -3,6 +3,9 @@ package com.beta.MoneyballMaster.contract;
 import android.content.Context;
 
 import com.beta.MoneyballMaster.contract.base.IBaseView;
+import com.beta.MoneyballMaster.entity.UserInfo;
+import com.beta.MoneyballMaster.http.base.ApiCallBack;
+
 /**
  * 登录的关联类
  * Created by HDL on 2016/7/22.
@@ -28,5 +31,9 @@ public class LoginContract {
      */
     public interface ILoginPresenter{
         void login(String userName,String pwd);//唯一的桥梁就是登录了
+    }
+    public interface ILoginModel{
+        void login(String userName,String pwd,ApiCallBack<UserInfo> callBack);
+        void saveUserInfo(UserInfo userInfo);
     }
 }
