@@ -34,10 +34,9 @@ public class TestItemHolder extends BaseViewHolder<String> {
     private int mLayoutHeight = 0;  //动画执行的padding高度
     private boolean isOpen = false; //是否开启状态
 
-    public TestItemHolder(Context mContext, ViewGroup parent) {
-        super(mContext, parent, R.layout.layout_look_detail);
+    public TestItemHolder(Context mContext, ViewGroup parent, int layoutId) {
+        super(mContext, parent, layoutId);
     }
-
     @Override
     public void initView() {
         lookDetail = itemView.findViewById(R.id.look_detail);

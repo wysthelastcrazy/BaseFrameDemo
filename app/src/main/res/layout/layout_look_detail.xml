@@ -17,16 +17,16 @@
             android:layout_weight="2"
             android:layout_height="match_parent"
             android:gravity="center_vertical"
-            android:paddingLeft="@dimen/dp_10"
+            android:paddingLeft="20px"
             android:orientation="vertical">
             <TextView
                 android:layout_width="wrap_content"
-                android:layout_height="@dimen/dp_30"
+                android:layout_height="60px"
                 android:gravity="center"
                 android:text="第一期"/>
             <TextView
                 android:layout_width="wrap_content"
-                android:layout_height="@dimen/dp_30"
+                android:layout_height="60px"
                 android:gravity="center"
                 android:text="编号：888888"/>
         </LinearLayout>
@@ -34,13 +34,13 @@
         <LinearLayout
             android:layout_width="0dp"
             android:layout_weight="1"
-            android:paddingRight="@dimen/dp_10"
+            android:paddingRight="20px"
             android:layout_height="wrap_content"
             android:gravity="center"
             android:orientation="vertical">
             <TextView
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/dp_30"
+                android:layout_height="60px"
                 android:gravity="right|center_vertical"
                 android:text="今日5：00揭晓"/>
             <LinearLayout
@@ -51,16 +51,16 @@
                 <TextView
                     android:id="@+id/look_detail"
                     android:layout_width="wrap_content"
-                    android:layout_height="@dimen/dp_30"
+                    android:layout_height="60px"
                     android:gravity="center"
                     android:textColor="#0083ce"
                     android:clickable="true"
-                    android:textSize="12sp"
+                    android:textSize="24px"
                     android:text="查看详情"/>
                 <ImageView
                     android:id="@+id/icon1"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
+                    android:layout_width="60px"
+                    android:layout_height="60px"
                     android:src="@mipmap/ic_launcher"/>
             </LinearLayout>
         </LinearLayout>

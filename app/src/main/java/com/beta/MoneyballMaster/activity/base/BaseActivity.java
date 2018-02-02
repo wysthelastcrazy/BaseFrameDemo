@@ -6,13 +6,14 @@ import android.text.TextUtils;
 
 import com.beta.MoneyballMaster.R;
 import com.beta.MoneyballMaster.activity.dialog.MLoadingDialog;
+import com.zhy.autolayout.AutoLayoutActivity;
 
 import butterknife.ButterKnife;
 
 /**
  * Created by Administrator on 2016/7/22.
  */
-public abstract class BaseActivity extends AppCompatActivity {
+public abstract class BaseActivity extends AutoLayoutActivity {
     protected final String TAG = getClass().getSimpleName();
 
     private MLoadingDialog mLoadingDialog;

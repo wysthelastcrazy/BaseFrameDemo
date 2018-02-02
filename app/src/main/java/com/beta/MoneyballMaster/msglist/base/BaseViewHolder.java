@@ -5,6 +5,8 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
+import com.zhy.autolayout.utils.AutoUtils;
+
 /**
  * Created by yas on 2017/8/31.
  */
@@ -18,6 +20,7 @@ public abstract class BaseViewHolder<T> extends RecyclerView.ViewHolder{
         super(LayoutInflater.from(
                 mContext).inflate(layoutId, parent,
                 false));
+//        AutoUtils.autoSize(itemView);
         this.mContext=mContext;
     }
     public abstract void initView();
