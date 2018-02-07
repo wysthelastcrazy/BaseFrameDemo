@@ -8,6 +8,8 @@ import com.beta.MoneyballMaster.R;
 import com.beta.MoneyballMaster.activity.base.BaseFragment;
 import com.beta.MoneyballMaster.adapter.AdapterTest;
 import com.beta.MoneyballMaster.widget.XRecyclerView;
+import com.scwang.smartrefresh.layout.api.RefreshLayout;
+import com.scwang.smartrefresh.layout.listener.OnRefreshLoadmoreListener;
 
 import java.util.ArrayList;
 
@@ -17,6 +19,7 @@ import java.util.ArrayList;
 
 public class FirstFragment extends BaseFragment{
     private XRecyclerView mRecyclerView;
+    private RefreshLayout mRefreshView;
     @Override
     public int getLayoutRes() {
         return R.layout.fragment_first;
@@ -37,5 +40,21 @@ public class FirstFragment extends BaseFragment{
         AdapterTest adapterTest=new AdapterTest(getActivity(),mList);
         mRecyclerView.setAdapter(adapterTest);
 
+        mRefreshView=rootView.findViewById(R.id.mRefreshLayout);
+        mRefreshView.setOnRefreshLoadmoreListener(mRefreshListener);
+
     }
+    /**
+     * 下拉刷新，上了加载更多监听
+     */
+    private OnRefreshLoadmoreListener mRefreshListener=new OnRefreshLoadmoreListener() {
+        @Override
+        public void onLoadmore(RefreshLayout refreshlayout) {
+
+        }
+
+        @Override
+        public void onRefresh(RefreshLayout refreshlayout) {
+        }
+    };
 }
