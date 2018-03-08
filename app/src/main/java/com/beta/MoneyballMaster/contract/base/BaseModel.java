@@ -10,14 +10,19 @@ import com.beta.MoneyballMaster.utils.MD5;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
+import java.io.File;
 import java.lang.reflect.Type;
+import java.net.FileNameMap;
+import java.net.URLConnection;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
 import okhttp3.MediaType;
+import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
 import rx.Observable;
 import rx.Subscriber;
@@ -49,7 +54,53 @@ public class BaseModel {
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(subscriber));
     }
-
+    /**
+     * 单张图片上传
+     * @param key
+     * @param filePath
+     * @return
+     */
+    protected final MultipartBody.Part createSingleFileBody(String key, String filePath){
+        File file = new File(filePath);
+        RequestBody imageBody = RequestBody.create(MediaType.parse(guessMimeType(file.getName())), file);
+        MultipartBody.Part imageBodyPart = MultipartBody.Part.createFormData(key, file.getName(), imageBody);
+        return imageBodyPart;
+    }
+    /**
+     * 多图片上传
+     * @param params 文本参数
+     * @param files 文件参数，map的key为参数名  val为文件路径
+     * @return
+     */
+    protected final List<MultipartBody.Part> createMultipartBody(Map<String, Object> params, Map<String,String> files){
+        params=addCommonParams(params);
+        MultipartBody.Builder builder = new MultipartBody.Builder()
+                .setType(MultipartBody.FORM);//表单类型
+        if (params!=null&&params.size()>0){
+            for (Map.Entry<String, Object> entry : params.entrySet()) {
+                String key = entry.getKey();
+                Object val = entry.getValue();
+                if(val == null){
+                    builder.addFormDataPart(key ,"");
+                } else {
+                    builder.addFormDataPart(key ,val+"");
+                }
+            }
+        }
+        if (files!=null&&files.size()>0){
+            for (Map.Entry<String, String> entry : files.entrySet()) {
+                String key = entry.getKey();
+                String val = entry.getValue();
+                if(!TextUtils.isEmpty(val)) {
+                    File file = new File(val);
+                    RequestBody imageBody = RequestBody.create(MediaType.parse(guessMimeType(file.getName())), file);
+                    builder.addFormDataPart(key, file.getName(), imageBody);//imgfile 后台接收图片流的参数名
+                }
+            }
+        }
+        List<MultipartBody.Part> parts = builder.build().parts();
+        return parts;
+    }
     protected final RequestBody creatRequestBody(Map<String, Object> map){
         String strJson=getPostJavaParams(map);
         RequestBody body=RequestBody.create(MediaType.parse("application/json; charset=utf-8"),strJson);
@@ -168,5 +219,20 @@ public class BaseModel {
             }
         }
         return sign;
+    }
+    /**
+     * 获取文件类型
+     * @param name 文件名称
+     * @return
+     */
+    public static String guessMimeType(String name)
+    {
+        FileNameMap fileNameMap = URLConnection.getFileNameMap();
+        String contentTypeFor = fileNameMap.getContentTypeFor(name);
+        if (contentTypeFor == null)
+        {
+            contentTypeFor = "application/octet-stream";
+        }
+        return contentTypeFor;
     }
 }
