@@ -11,6 +11,8 @@ import com.beta.MoneyballMaster.widget.XRecyclerView;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnRefreshLoadmoreListener;
 
+import org.greenrobot.eventbus.EventBus;
+
 import java.util.ArrayList;
 
 /**
@@ -43,6 +45,7 @@ public class FirstFragment extends BaseFragment{
         mRefreshView=rootView.findViewById(R.id.mRefreshLayout);
         mRefreshView.setOnRefreshLoadmoreListener(mRefreshListener);
 
+//        EventBus.getDefault().register(this);
     }
     /**
      * 下拉刷新，上了加载更多监听
