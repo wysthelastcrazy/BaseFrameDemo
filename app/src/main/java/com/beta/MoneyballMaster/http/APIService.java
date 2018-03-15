@@ -1,7 +1,7 @@
 package com.beta.MoneyballMaster.http;
 
 
-import com.beta.MoneyballMaster.entity.base.HttpBaseResult;
+import com.beta.MoneyballMaster.http.base.HttpBaseResult;
 
 import java.util.List;
 import java.util.Map;

@@ -1,4 +1,4 @@
-package com.beta.MoneyballMaster.entity;
+package com.beta.MoneyballMaster.bean;
 
 
 import java.io.Serializable;

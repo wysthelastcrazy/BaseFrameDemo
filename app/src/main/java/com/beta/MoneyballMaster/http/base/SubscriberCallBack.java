@@ -1,7 +1,6 @@
 package com.beta.MoneyballMaster.http.base;
 
 import com.google.gson.JsonSyntaxException;
-import com.beta.MoneyballMaster.entity.base.HttpBaseResult;
 
 import org.json.JSONException;
 

@@ -3,7 +3,7 @@ package com.beta.MoneyballMaster.contract;
 import android.content.Context;
 
 import com.beta.MoneyballMaster.contract.base.IBaseView;
-import com.beta.MoneyballMaster.entity.UserInfo;
+import com.beta.MoneyballMaster.bean.UserInfo;
 import com.beta.MoneyballMaster.http.base.ApiCallBack;
 
 /**

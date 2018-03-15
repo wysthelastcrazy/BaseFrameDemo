@@ -1,13 +1,10 @@
 package com.beta.MoneyballMaster.contract.presenters;
 
 import com.beta.MoneyballMaster.contract.models.LoginModel;
-import com.beta.MoneyballMaster.entity.UserInfo;
+import com.beta.MoneyballMaster.bean.UserInfo;
 import com.beta.MoneyballMaster.contract.LoginContract;
 import com.beta.MoneyballMaster.contract.base.BasePresenter;
 import com.beta.MoneyballMaster.http.base.ApiCallBack;
-import com.beta.MoneyballMaster.http.base.SubscriberCallBack;
-import java.util.HashMap;
-import java.util.Map;
 
 /**
  * Created by Administrator on 2016/7/22.
