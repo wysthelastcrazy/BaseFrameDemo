@@ -10,4 +10,5 @@
 
     <!--tab导航栏相关-->
     <color name="bg_tab">#17171F</color>
+    <color name="common_bg">#f6f6f6</color>
 </resources>

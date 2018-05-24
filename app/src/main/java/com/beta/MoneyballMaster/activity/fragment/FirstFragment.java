@@ -7,7 +7,7 @@ import android.widget.TextView;
 import com.beta.MoneyballMaster.R;
 import com.beta.MoneyballMaster.activity.base.BaseFragment;
 import com.beta.MoneyballMaster.adapter.AdapterTest;
-import com.beta.MoneyballMaster.widget.XRecyclerView;
+import com.beta.MoneyballMaster.widget.recycler.ExtendRecyclerView;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnRefreshLoadmoreListener;
 
@@ -20,7 +20,7 @@ import java.util.ArrayList;
  */
 
 public class FirstFragment extends BaseFragment{
-    private XRecyclerView mRecyclerView;
+    private ExtendRecyclerView mRecyclerView;
     private RefreshLayout mRefreshView;
     @Override
     public int getLayoutRes() {
@@ -45,7 +45,6 @@ public class FirstFragment extends BaseFragment{
         mRefreshView=rootView.findViewById(R.id.mRefreshLayout);
         mRefreshView.setOnRefreshLoadmoreListener(mRefreshListener);
 
-//        EventBus.getDefault().register(this);
     }
     /**
      * 下拉刷新，上了加载更多监听

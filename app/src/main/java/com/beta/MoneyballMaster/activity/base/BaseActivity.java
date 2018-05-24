@@ -1,5 +1,6 @@
 package com.beta.MoneyballMaster.activity.base;
 
+import android.app.DialogFragment;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
@@ -81,5 +82,10 @@ public abstract class BaseActivity extends AutoLayoutActivity {
     protected void onDestroy() {
         super.onDestroy();
         hideLoadingDialog();
+    }
+    public void showPromptDialog(String text){
+         DialogFragment promptDialog=new DialogFragment();
+
+        promptDialog.show(getFragmentManager(),text);
     }
 }

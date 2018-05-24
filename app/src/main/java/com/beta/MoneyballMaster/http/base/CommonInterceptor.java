@@ -16,7 +16,11 @@ public class CommonInterceptor implements Interceptor {
 
     @Override public Response intercept(Interceptor.Chain chain) throws IOException {
         Request oldRequest = chain.request();
+        if ("GET".equals(oldRequest.method())){
 
+        }else if ("POST".equals(oldRequest.method())){
+
+        }
         // 添加新的参数
         HttpUrl.Builder authorizedUrlBuilder = oldRequest.url()
                 .newBuilder()

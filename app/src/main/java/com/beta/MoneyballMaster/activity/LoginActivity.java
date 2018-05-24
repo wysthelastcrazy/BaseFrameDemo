@@ -77,6 +77,7 @@ public class LoginActivity extends BaseActivity implements LoginContract.ILoginV
         ToastUtils.showToast(this, "toRegisterActivity");
     }
 
+
     public void onRegister(View view) {
         toRegister();
     }

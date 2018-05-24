@@ -1,4 +1,4 @@
-package com.beta.MoneyballMaster.widget;
+package com.beta.MoneyballMaster.widget.recycler;
 
 import android.content.Context;
 import android.support.annotation.Nullable;
@@ -180,11 +180,22 @@ public class XRecyclerView extends RecyclerView {
             }
         }
     }
+    private RecycleDataChangeListener mEmptyListener;
+    public void setEmptyListener(RecycleDataChangeListener mEmptyListener){
+        this.mEmptyListener=mEmptyListener;
+    }
     private class DataObserver extends RecyclerView.AdapterDataObserver {
         @Override
         public void onChanged() {
             if (mWrapAdapter != null) {
                 mWrapAdapter.notifyDataSetChanged();
+                if (mEmptyListener!=null){
+                    if (mWrapAdapter.getRealItemCount()<=0){
+                        mEmptyListener.showEmpty();
+                    }else{
+                        mEmptyListener.hideEmpty();
+                    }
+                }
             }
         }
 
