@@ -1,4 +1,6 @@
-package com.beta.MoneyballMaster.http.base;
+package com.beta.MoneyballMaster.http.utils;
+
+
 
 import com.beta.MoneyballMaster.common.Common;
 
@@ -19,8 +21,8 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 
 /**
- * Retofit网络请求工具类
- * Created by HDL on 2016/7/29.
+ * Retrofit网络请求工具类
+ * Created by yas on 2018/4/25.
  */
 public class RetrofitUtils {
     private static final int READ_TIMEOUT = 60;//读取超时时间,单位  秒
@@ -32,7 +34,7 @@ public class RetrofitUtils {
 
     }
 
-    public static Retrofit newInstence() {
+    public static Retrofit newInstance() {
         if (mRetrofit==null) {
             OkHttpClient client = getHttpClient();
             //初始化一个client,不然retrofit会自己默认添加一个

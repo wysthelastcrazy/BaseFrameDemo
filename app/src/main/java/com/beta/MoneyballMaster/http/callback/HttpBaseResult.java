@@ -1,4 +1,4 @@
-package com.beta.MoneyballMaster.http.base;
+package com.beta.MoneyballMaster.http.callback;
 
 /**
  * Created by yas on 2017/11/30.

@@ -6,7 +6,7 @@ import com.beta.MoneyballMaster.contract.base.IBaseModel;
 import com.beta.MoneyballMaster.contract.base.IBasePresenter;
 import com.beta.MoneyballMaster.contract.base.IBaseView;
 import com.beta.MoneyballMaster.bean.UserInfo;
-import com.beta.MoneyballMaster.http.base.ApiCallBack;
+import com.beta.MoneyballMaster.http.callback.ApiCallBack;
 
 /**
  * 登录的关联类

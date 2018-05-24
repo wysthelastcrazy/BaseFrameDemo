@@ -1,7 +1,8 @@
 package com.beta.MoneyballMaster.contract.base;
 
+import com.beta.MoneyballMaster.http.callback.ApiCallBack;
+
 import rx.Observable;
-import rx.Subscriber;
 
 /**
  * Created by yas on 2018/5/24.
@@ -9,6 +10,6 @@ import rx.Subscriber;
 
 public interface IBaseModel {
 
-    void addSubscription(Observable observable, Subscriber subscriber);
+    void addSubscription(Observable observable, ApiCallBack callBack);
     void onUnsubscribe();
 }

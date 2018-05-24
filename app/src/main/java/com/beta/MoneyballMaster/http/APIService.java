@@ -1,20 +1,15 @@
 package com.beta.MoneyballMaster.http;
 
 
-import com.beta.MoneyballMaster.http.base.HttpBaseResult;
 
-import java.util.List;
-import java.util.Map;
+import com.beta.MoneyballMaster.bean.UserInfo;
+import com.beta.MoneyballMaster.http.callback.HttpBaseResult;
 
 import okhttp3.MultipartBody;
-import okhttp3.RequestBody;
 import retrofit2.http.Body;
-import retrofit2.http.GET;
-import retrofit2.http.Multipart;
+import retrofit2.http.Field;
+import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.POST;
-import retrofit2.http.Part;
-import retrofit2.http.QueryMap;
-import retrofit2.http.Url;
 import rx.Observable;
 
 /**
@@ -22,36 +17,22 @@ import rx.Observable;
  * Created by yas on 2017/12/14.
  */
 public interface APIService {
+
     /**
      * 用户登录的接口
      *
      * @return RxJava 对象
      */
-    @POST("api/staff/passport/loginWithPwd.action")
-    Observable<HttpBaseResult> userLogin(@Body RequestBody body);
-    /**
-     * 上传单个文件
-     */
-    @Multipart
-    @POST
-    Observable<HttpBaseResult> uploadSingleFile(@Url String url, @Part MultipartBody.Part part);
+    @POST("/api/passport/login.action")
+    @FormUrlEncoded
+    Observable<HttpBaseResult<UserInfo>> userLogin(@Field("phone") String phone, @Field("smsCode") String smsCode);
 
     /**
-     * 多文件上传
-     * @param url
-     * @param parts
-     * @return
+     * 上传外访图片（批量）
+     * 通过 MultipartBody和@body作为参数来上传
+     * @param multipartBody MultipartBody包含多个Part
      */
-    @Multipart
-    @POST
-    Observable<HttpBaseResult> upload(@Url String url, @Part List<MultipartBody.Part> parts);
-
-    /**
-     * 普通get请求
-     * @param params
-     * @return
-     */
-    @GET("")
-    Observable<HttpBaseResult> getOrderList(@QueryMap Map<String,Object> params);
+    @POST("/api/loan/batchUploadPicture.action")
+    Observable<HttpBaseResult> uploadFile(@Body MultipartBody multipartBody);
 }
 

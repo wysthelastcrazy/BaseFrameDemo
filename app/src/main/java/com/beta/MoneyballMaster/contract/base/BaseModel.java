@@ -1,8 +1,12 @@
 package com.beta.MoneyballMaster.contract.base;
 
 
+import com.beta.MoneyballMaster.bean.UserInfo;
 import com.beta.MoneyballMaster.http.APIService;
-import com.beta.MoneyballMaster.http.base.RetrofitUtils;
+import com.beta.MoneyballMaster.http.ProtocolManager;
+import com.beta.MoneyballMaster.http.callback.ApiCallBack;
+import com.beta.MoneyballMaster.http.callback.SubscriberCallBack;
+
 import rx.Observable;
 import rx.Subscriber;
 import rx.android.schedulers.AndroidSchedulers;
@@ -14,7 +18,7 @@ import rx.subscriptions.CompositeSubscription;
  */
 
 public class BaseModel implements IBaseModel{
-    public APIService apiStores = RetrofitUtils.newInstence().create(APIService.class);
+    public APIService apiStores = ProtocolManager.getInstance().apiStores;
     private CompositeSubscription mCompositeSubscription;
     //RXjava取消注册，以避免内存泄露
     @Override
@@ -25,13 +29,13 @@ public class BaseModel implements IBaseModel{
     }
 
     @Override
-    public void addSubscription(Observable observable, Subscriber subscriber) {
+    public void addSubscription(Observable observable, ApiCallBack callBack) {
         if (mCompositeSubscription == null) {
             mCompositeSubscription = new CompositeSubscription();
         }
         mCompositeSubscription.add(observable
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(subscriber));
+                .subscribe(new SubscriberCallBack(callBack)));
     }
 }

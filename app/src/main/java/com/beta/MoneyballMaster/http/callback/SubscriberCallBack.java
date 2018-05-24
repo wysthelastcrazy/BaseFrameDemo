@@ -1,4 +1,4 @@
-package com.beta.MoneyballMaster.http.base;
+package com.beta.MoneyballMaster.http.callback;
 
 import com.google.gson.JsonSyntaxException;
 
@@ -54,6 +54,5 @@ public class SubscriberCallBack<T> extends Subscriber<HttpBaseResult<T>> {
         }else{
             apiCallBack.onFailed(t.errorCode,t.msg);
         }
-        apiCallBack.onCompleted();
     }
 }

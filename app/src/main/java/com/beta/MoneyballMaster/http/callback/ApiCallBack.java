@@ -1,4 +1,4 @@
-package com.beta.MoneyballMaster.http.base;
+package com.beta.MoneyballMaster.http.callback;
 
 /**
  * Created by yas on 2017/11/30.
@@ -6,7 +6,7 @@ package com.beta.MoneyballMaster.http.base;
 
 public interface ApiCallBack<T> {
     void onSuccessful(T t);
-    void onFailed(int errorCode,String errorMsg);
+    void onFailed(int errorCode, String errorMsg);
     void onCompleted();
 
 }
