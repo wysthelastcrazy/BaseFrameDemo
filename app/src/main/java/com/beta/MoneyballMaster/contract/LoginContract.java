@@ -2,6 +2,8 @@ package com.beta.MoneyballMaster.contract;
 
 import android.content.Context;
 
+import com.beta.MoneyballMaster.contract.base.IBaseModel;
+import com.beta.MoneyballMaster.contract.base.IBasePresenter;
 import com.beta.MoneyballMaster.contract.base.IBaseView;
 import com.beta.MoneyballMaster.bean.UserInfo;
 import com.beta.MoneyballMaster.http.base.ApiCallBack;
@@ -29,10 +31,10 @@ public class LoginContract {
     /**
      * P视图与逻辑处理的连接层
      */
-    public interface ILoginPresenter{
+    public interface ILoginPresenter extends IBasePresenter<ILoginView>{
         void login(String userName,String pwd);//唯一的桥梁就是登录了
     }
-    public interface ILoginModel{
+    public interface ILoginModel extends IBaseModel{
         void login(String userName,String pwd,ApiCallBack<UserInfo> callBack);
         void saveUserInfo(UserInfo userInfo);
     }
