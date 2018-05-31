@@ -12,6 +12,7 @@ import android.view.ViewGroup;
  */
 
 public abstract class BaseFragment extends Fragment {
+    protected final String TAG = getClass().getSimpleName();
     private View rootView;
     @Nullable
     @Override
