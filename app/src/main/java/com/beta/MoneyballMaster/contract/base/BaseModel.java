@@ -1,14 +1,12 @@
 package com.beta.MoneyballMaster.contract.base;
 
 
-import com.beta.MoneyballMaster.bean.UserInfo;
 import com.beta.MoneyballMaster.http.APIService;
 import com.beta.MoneyballMaster.http.ProtocolManager;
 import com.beta.MoneyballMaster.http.callback.ApiCallBack;
 import com.beta.MoneyballMaster.http.callback.SubscriberCallBack;
 
 import rx.Observable;
-import rx.Subscriber;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
 import rx.subscriptions.CompositeSubscription;

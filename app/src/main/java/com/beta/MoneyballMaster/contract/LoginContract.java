@@ -5,7 +5,7 @@ import android.content.Context;
 import com.beta.MoneyballMaster.contract.base.IBaseModel;
 import com.beta.MoneyballMaster.contract.base.IBasePresenter;
 import com.beta.MoneyballMaster.contract.base.IBaseView;
-import com.beta.MoneyballMaster.bean.UserInfo;
+import com.beta.MoneyballMaster.entity.UserInfo;
 import com.beta.MoneyballMaster.http.callback.ApiCallBack;
 
 /**

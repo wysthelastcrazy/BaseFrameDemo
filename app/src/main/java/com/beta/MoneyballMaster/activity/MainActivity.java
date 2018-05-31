@@ -9,6 +9,7 @@ import com.ashokvarma.bottomnavigation.BottomNavigationBar;
 import com.ashokvarma.bottomnavigation.BottomNavigationItem;
 import com.beta.MoneyballMaster.R;
 import com.beta.MoneyballMaster.activity.base.BaseActivity;
+import com.beta.MoneyballMaster.activity.fragment.EchelonFragment;
 import com.beta.MoneyballMaster.activity.fragment.FirstFragment;
 
 import butterknife.BindView;
@@ -43,7 +44,7 @@ public class MainActivity extends BaseActivity {
         initFragment();
     }
     private void initFragment() {
-        firstFragment = new FirstFragment();
+        firstFragment = new EchelonFragment();
         manager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = manager.beginTransaction();
         fragmentTransaction.add(R.id.content, firstFragment, "flag1").commitAllowingStateLoss();

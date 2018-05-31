@@ -1,7 +1,7 @@
 package com.beta.MoneyballMaster.http;
 
 
-import com.beta.MoneyballMaster.bean.UserInfo;
+import com.beta.MoneyballMaster.entity.UserInfo;
 import com.beta.MoneyballMaster.http.callback.HttpBaseResult;
 import com.beta.MoneyballMaster.http.utils.FileException;
 import com.beta.MoneyballMaster.http.utils.HttpUtils;

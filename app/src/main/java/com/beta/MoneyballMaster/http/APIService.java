@@ -2,7 +2,7 @@ package com.beta.MoneyballMaster.http;
 
 
 
-import com.beta.MoneyballMaster.bean.UserInfo;
+import com.beta.MoneyballMaster.entity.UserInfo;
 import com.beta.MoneyballMaster.http.callback.HttpBaseResult;
 
 import okhttp3.MultipartBody;
