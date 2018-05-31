@@ -18,9 +18,7 @@ import java.util.ArrayList;
 
 
 /**
- * Created by 钉某人
- * github: https://github.com/DingMouRen
- * email: naildingmouren@gmail.com
+ * Created by yas on 2018/5/31.
  * 梯形布局
  */
 public class EchelonFragment extends BaseFragment {
