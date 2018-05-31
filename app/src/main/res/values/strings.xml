@@ -2,8 +2,8 @@
     <string name="app_name">retrofitDemo</string>
 
     <!--主页tab-->
-    <string name="tab_guide">tab1</string>
-    <string name="tab_score">tab2</string>
+    <string name="tab_guide">echelon</string>
+    <string name="tab_score">slide</string>
     <string name="tab_data">tab3</string>
     <string name="tab_mine">tab4</string>
 

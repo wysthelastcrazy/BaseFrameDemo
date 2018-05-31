@@ -1,53 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.beta.MoneyballMaster">
-    <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <!-- SD卡读写权限 -->
     <uses-permission android:name="android.permission.READ_CALL_LOG" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
     <application
+        android:name=".MApp"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:name=".MApp"
         android:theme="@style/TranslucentTheme">
-        <!--AutoLayout 开发分辨率-->
+
+        <!-- AutoLayout 开发分辨率 -->
         <meta-data
             android:name="design_width"
-            android:value="768"></meta-data>
+            android:value="768" />
         <meta-data
             android:name="design_height"
-            android:value="1280"></meta-data>
-        <activity android:name=".activity.MainActivity"
-            android:screenOrientation="portrait">
-        </activity>
-        <activity android:name=".activity.LoginActivity"
-            android:screenOrientation="portrait">
+            android:value="1280" />
 
-        </activity>
-        <activity android:name=".activity.ServiceTestActivity"
-            android:screenOrientation="portrait">
-
-        </activity>
-        <activity android:name=".activity.CollapsingToolbarActivity"
+        <activity
+            android:name=".activity.MainActivity"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".activity.LoginActivity"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name=".activity.ServiceTestActivity"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name=".activity.CollapsingToolbarActivity"
+            android:screenOrientation="portrait"></activity>
 
+        <service android:name=".service.MyService" />
 
-        <service android:name=".service.MyService"/>
         <receiver android:name=".receiver.MyReceiver">
             <intent-filter>
-                <action android:name="com.test.broadcast"/>
+                <action android:name="com.test.broadcast" />
             </intent-filter>
         </receiver>
+
+        <activity android:name=".activity.EchelonActivity"></activity>
     </application>
 
 </manifest>

@@ -11,6 +11,7 @@ import com.beta.MoneyballMaster.R;
 import com.beta.MoneyballMaster.activity.base.BaseActivity;
 import com.beta.MoneyballMaster.activity.fragment.EchelonFragment;
 import com.beta.MoneyballMaster.activity.fragment.FirstFragment;
+import com.beta.MoneyballMaster.activity.fragment.SlideFragment;
 
 import butterknife.BindView;
 
@@ -21,9 +22,10 @@ public class MainActivity extends BaseActivity {
     FrameLayout content;
     @BindView(R.id.mBottomView)
     BottomNavigationBar mBottomView;
-    private Fragment firstFragment;
+    private Fragment mEchelonFragment;
+    private Fragment mSlideFragment;
     private FragmentManager manager;
-    private Fragment mContent;
+    private Fragment currFragment;
     @Override
     protected int getLayoutRes() {
         return R.layout.activity_main;
@@ -44,16 +46,28 @@ public class MainActivity extends BaseActivity {
         initFragment();
     }
     private void initFragment() {
-        firstFragment = new EchelonFragment();
+        mEchelonFragment = new EchelonFragment();
+        mSlideFragment = new SlideFragment();
         manager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = manager.beginTransaction();
-        fragmentTransaction.add(R.id.content, firstFragment, "flag1").commitAllowingStateLoss();
-        mContent = firstFragment;
+        fragmentTransaction.add(R.id.content, mEchelonFragment, "flag1").commitAllowingStateLoss();
+        currFragment = mEchelonFragment;
     }
     private BottomNavigationBar.OnTabSelectedListener mTabChangeListener=new BottomNavigationBar.OnTabSelectedListener() {
         @Override
         public void onTabSelected(int position) {
-
+            switch (position){
+                case 0:
+                    switchContent(currFragment,mEchelonFragment);
+                    break;
+                case 1:
+                    switchContent(currFragment,mSlideFragment);
+                    break;
+                case 2:
+                    break;
+                case 3:
+                    break;
+            }
         }
 
         @Override
@@ -67,6 +81,20 @@ public class MainActivity extends BaseActivity {
         }
     };
     public void switchContent(Fragment from, Fragment to) {
+        if (currFragment != to) {
+            currFragment = to;
+            FragmentTransaction transaction = manager.beginTransaction();
+            if (!to.isAdded()) {    // 先判断是否被add过
+                String flag = "";
+                if (to instanceof EchelonFragment)
+                    flag = "flag1";
+                if (to instanceof SlideFragment)
+                    flag = "flag2";
 
+                transaction.hide(from).add(R.id.content, to, flag).commitAllowingStateLoss(); // 隐藏当前的fragment，add下一个到Activity中
+            } else {
+                transaction.hide(from).show(to).commitAllowingStateLoss(); // 隐藏当前的fragment，显示下一个
+            }
+        }
     }
 }
