@@ -9,6 +9,7 @@ import com.ashokvarma.bottomnavigation.BottomNavigationBar;
 import com.ashokvarma.bottomnavigation.BottomNavigationItem;
 import com.beta.MoneyballMaster.R;
 import com.beta.MoneyballMaster.activity.base.BaseActivity;
+import com.beta.MoneyballMaster.activity.fragment.BannerFragment;
 import com.beta.MoneyballMaster.activity.fragment.EchelonFragment;
 import com.beta.MoneyballMaster.activity.fragment.FirstFragment;
 import com.beta.MoneyballMaster.activity.fragment.SkidRightFragment;
@@ -28,6 +29,7 @@ public class MainActivity extends BaseActivity {
     private FragmentManager manager;
     private Fragment currFragment;
     private Fragment mSkidRightFragment;
+    private Fragment mBannerFragment;
     @Override
     protected int getLayoutRes() {
         return R.layout.activity_main;
@@ -51,6 +53,7 @@ public class MainActivity extends BaseActivity {
         mEchelonFragment = new EchelonFragment();
         mSlideFragment = new SlideFragment();
         mSkidRightFragment=new SkidRightFragment();
+        mBannerFragment=new BannerFragment();
 
         manager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = manager.beginTransaction();
@@ -71,6 +74,7 @@ public class MainActivity extends BaseActivity {
                     switchContent(currFragment,mSkidRightFragment);
                     break;
                 case 3:
+                    switchContent(currFragment,mBannerFragment);
                     break;
             }
         }
@@ -97,6 +101,9 @@ public class MainActivity extends BaseActivity {
                     flag = "flag2";
                 if (to instanceof SkidRightFragment)
                     flag="flag3";
+                if (to instanceof BannerFragment){
+                    flag="flag4";
+                }
                 transaction.hide(from).add(R.id.content, to, flag).commitAllowingStateLoss(); // 隐藏当前的fragment，add下一个到Activity中
             } else {
                 transaction.hide(from).show(to).commitAllowingStateLoss(); // 隐藏当前的fragment，显示下一个
