@@ -30,6 +30,7 @@ public class MainActivity extends BaseActivity {
     private Fragment currFragment;
     private Fragment mSkidRightFragment;
     private Fragment mBannerFragment;
+    private Fragment mFirstFragment;
     @Override
     protected int getLayoutRes() {
         return R.layout.activity_main;
@@ -54,6 +55,7 @@ public class MainActivity extends BaseActivity {
         mSlideFragment = new SlideFragment();
         mSkidRightFragment=new SkidRightFragment();
         mBannerFragment=new BannerFragment();
+        mFirstFragment=new FirstFragment();
 
         manager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = manager.beginTransaction();
@@ -74,7 +76,7 @@ public class MainActivity extends BaseActivity {
                     switchContent(currFragment,mSkidRightFragment);
                     break;
                 case 3:
-                    switchContent(currFragment,mBannerFragment);
+                    switchContent(currFragment,mFirstFragment);
                     break;
             }
         }
@@ -101,7 +103,7 @@ public class MainActivity extends BaseActivity {
                     flag = "flag2";
                 if (to instanceof SkidRightFragment)
                     flag="flag3";
-                if (to instanceof BannerFragment){
+                if (to instanceof FirstFragment){
                     flag="flag4";
                 }
                 transaction.hide(from).add(R.id.content, to, flag).commitAllowingStateLoss(); // 隐藏当前的fragment，add下一个到Activity中

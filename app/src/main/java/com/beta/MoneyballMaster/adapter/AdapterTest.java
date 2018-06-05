@@ -13,8 +13,11 @@ import android.widget.TextView;
 import com.beta.MoneyballMaster.R;
 import com.beta.MoneyballMaster.adapter.base.BaseRecyclerAdapter;
 import com.beta.MoneyballMaster.adapter.base.BaseViewHolder;
+import com.beta.MoneyballMaster.listener.ItemTouchHelperAdaper;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 
 import butterknife.BindView;
 
@@ -22,7 +25,7 @@ import butterknife.BindView;
  * Created by yas on 2017/12/1.
  */
 
-public class AdapterTest extends BaseRecyclerAdapter<AdapterTest.TestItemHolder,String>{
+public class AdapterTest extends BaseRecyclerAdapter<AdapterTest.TestItemHolder,String> implements ItemTouchHelperAdaper{
 
     public AdapterTest(Context mContext, ArrayList<String> mList) {
         super(mContext, mList);
@@ -36,6 +39,18 @@ public class AdapterTest extends BaseRecyclerAdapter<AdapterTest.TestItemHolder,
     @Override
     protected TestItemHolder getViewHolder(View itemView) {
         return new TestItemHolder(itemView);
+    }
+
+    @Override
+    public void onItemMove(int fromPosition, int toPosition) {
+        Collections.swap(getList(),fromPosition,toPosition);
+        notifyItemMoved(fromPosition,toPosition);
+    }
+
+    @Override
+    public void onItemDel(int position) {
+        getList().remove(position);
+        notifyItemRemoved(position);
     }
 
     public class TestItemHolder extends BaseViewHolder<String> {
@@ -68,6 +83,7 @@ public class AdapterTest extends BaseRecyclerAdapter<AdapterTest.TestItemHolder,
         @Override
         public void setValues(String s) {
             tvDetail.setText(s);
+            lookDetail.setText(s);
         }
 
         /**

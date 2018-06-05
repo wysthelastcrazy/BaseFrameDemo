@@ -1,12 +1,16 @@
 package com.beta.MoneyballMaster.activity.fragment;
 
 import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.helper.ItemTouchHelper;
 import android.view.View;
 import android.widget.TextView;
 
 import com.beta.MoneyballMaster.R;
 import com.beta.MoneyballMaster.activity.base.BaseFragment;
 import com.beta.MoneyballMaster.adapter.AdapterTest;
+import com.beta.MoneyballMaster.listener.ItemTestCallback;
+import com.beta.MoneyballMaster.widget.customLayoutManager.CustomLayoutManager;
 import com.beta.MoneyballMaster.widget.recycler.ExtendRecyclerView;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnRefreshLoadmoreListener;
@@ -20,7 +24,7 @@ import java.util.ArrayList;
  */
 
 public class FirstFragment extends BaseFragment{
-    private ExtendRecyclerView mRecyclerView;
+    private RecyclerView mRecyclerView;
     private RefreshLayout mRefreshView;
     @Override
     public int getLayoutRes() {
@@ -32,18 +36,23 @@ public class FirstFragment extends BaseFragment{
         mRecyclerView=rootView.findViewById(R.id.mRecyclerView);
         LinearLayoutManager linearLayoutManager=new LinearLayoutManager(getActivity());
         mRecyclerView.setLayoutManager(linearLayoutManager);
-        TextView tv=new TextView(getActivity());
-        tv.setText("this is headerView");
-        mRecyclerView.addHeaderView(tv);
+//        TextView tv=new TextView(getActivity());
+//        tv.setText("this is headerView");
+//        mRecyclerView.addHeaderView(tv);
         ArrayList<String> mList=new ArrayList<>();
-        for (int i=1;i<11;i++){
+        for (int i=1;i<31;i++){
             mList.add("item"+i);
         }
         AdapterTest adapterTest=new AdapterTest(getActivity(),mList);
+
+        ItemTestCallback callback=new ItemTestCallback(adapterTest);
+        ItemTouchHelper touchHelper=new ItemTouchHelper(callback);
+        touchHelper.attachToRecyclerView(mRecyclerView);
+
         mRecyclerView.setAdapter(adapterTest);
 
-        mRefreshView=rootView.findViewById(R.id.mRefreshLayout);
-        mRefreshView.setOnRefreshLoadmoreListener(mRefreshListener);
+//        mRefreshView=rootView.findViewById(R.id.mRefreshLayout);
+//        mRefreshView.setOnRefreshLoadmoreListener(mRefreshListener);
 
     }
     /**
