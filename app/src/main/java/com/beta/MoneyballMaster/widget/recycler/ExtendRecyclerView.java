@@ -151,4 +151,7 @@ public class ExtendRecyclerView extends FrameLayout {
     public void setEmptyType(int type){
         //TODO 根据不同类型，设置显示的文本
     }
+    public RecyclerView getRecyclerView(){
+        return mRecyclerView;
+    }
 }
