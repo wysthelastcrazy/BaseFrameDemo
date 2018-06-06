@@ -14,6 +14,7 @@ import com.beta.MoneyballMaster.activity.fragment.EchelonFragment;
 import com.beta.MoneyballMaster.activity.fragment.FirstFragment;
 import com.beta.MoneyballMaster.activity.fragment.SkidRightFragment;
 import com.beta.MoneyballMaster.activity.fragment.SlideFragment;
+import com.beta.MoneyballMaster.activity.fragment.ViewPagerFragment;
 
 import butterknife.BindView;
 
@@ -31,6 +32,7 @@ public class MainActivity extends BaseActivity {
     private Fragment mSkidRightFragment;
     private Fragment mBannerFragment;
     private Fragment mFirstFragment;
+    private Fragment mViewPagerFragment;
     @Override
     protected int getLayoutRes() {
         return R.layout.activity_main;
@@ -56,6 +58,7 @@ public class MainActivity extends BaseActivity {
         mSkidRightFragment=new SkidRightFragment();
         mBannerFragment=new BannerFragment();
         mFirstFragment=new FirstFragment();
+        mViewPagerFragment=new ViewPagerFragment();
 
         manager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = manager.beginTransaction();
@@ -76,7 +79,7 @@ public class MainActivity extends BaseActivity {
                     switchContent(currFragment,mSkidRightFragment);
                     break;
                 case 3:
-                    switchContent(currFragment,mFirstFragment);
+                    switchContent(currFragment,mViewPagerFragment);
                     break;
             }
         }
@@ -103,7 +106,7 @@ public class MainActivity extends BaseActivity {
                     flag = "flag2";
                 if (to instanceof SkidRightFragment)
                     flag="flag3";
-                if (to instanceof FirstFragment){
+                if (to instanceof ViewPagerFragment){
                     flag="flag4";
                 }
                 transaction.hide(from).add(R.id.content, to, flag).commitAllowingStateLoss(); // 隐藏当前的fragment，add下一个到Activity中
