@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="RandomCodeView">
+        <attr name="refresh" format="boolean"/>
+        <attr name="test" format="dimension"/>
+    </declare-styleable>
+</resources>

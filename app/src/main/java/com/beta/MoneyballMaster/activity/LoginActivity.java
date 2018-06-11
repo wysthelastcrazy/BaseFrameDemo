@@ -1,6 +1,7 @@
 package com.beta.MoneyballMaster.activity;
 
 import android.content.Context;
+import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -11,9 +12,12 @@ import com.beta.MoneyballMaster.R;
 import com.beta.MoneyballMaster.activity.base.BaseActivity;
 import com.beta.MoneyballMaster.contract.LoginContract;
 import com.beta.MoneyballMaster.contract.presenters.LoginPresenter;
+import com.beta.MoneyballMaster.utils.MyLog;
 import com.beta.MoneyballMaster.utils.ToastUtils;
+import com.beta.MoneyballMaster.widget.RandomCodeView;
 
 import butterknife.BindView;
+import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 public class LoginActivity extends BaseActivity implements LoginContract.ILoginView {
@@ -29,6 +33,8 @@ public class LoginActivity extends BaseActivity implements LoginContract.ILoginV
     ProgressBar pbProgress;
     @BindView(R.id.tv_title)
     TextView tvTitle;
+    @BindView(R.id.codeView)
+    RandomCodeView codeView;
     private LoginPresenter mLoginPresenter;
 
     @Override
@@ -38,7 +44,7 @@ public class LoginActivity extends BaseActivity implements LoginContract.ILoginV
 
     @Override
     protected void initLayout() {
-        mLoginPresenter=new LoginPresenter(this);
+        mLoginPresenter = new LoginPresenter(this);
     }
 
 
@@ -89,7 +95,9 @@ public class LoginActivity extends BaseActivity implements LoginContract.ILoginV
                 finish();
                 break;
             case R.id.btn_login:
-                mLoginPresenter.login(etLoginUserName.getText().toString(),etLoginPwd.getText().toString());
+                MyLog.debug(TAG,"[onClick]  code:"+codeView.getRandomCode());
+
+                mLoginPresenter.login(etLoginUserName.getText().toString(), etLoginPwd.getText().toString());
                 break;
         }
     }
@@ -98,5 +106,12 @@ public class LoginActivity extends BaseActivity implements LoginContract.ILoginV
     protected void onDestroy() {
         super.onDestroy();
         mLoginPresenter.deAttach();
+    }
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        // TODO: add setContentView(...) invocation
+        ButterKnife.bind(this);
     }
 }
