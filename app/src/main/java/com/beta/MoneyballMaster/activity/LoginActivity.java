@@ -107,11 +107,4 @@ public class LoginActivity extends BaseActivity implements LoginContract.ILoginV
         super.onDestroy();
         mLoginPresenter.deAttach();
     }
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        // TODO: add setContentView(...) invocation
-        ButterKnife.bind(this);
-    }
 }

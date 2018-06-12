@@ -1,4 +1,5 @@
 apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
 //apply plugin: 'android-apt'
 android {
     compileSdkVersion 26
@@ -38,14 +39,20 @@ dependencies {
     compile 'io.reactivex:rxandroid:1.2.0'
     compile 'com.jakewharton:butterknife:8.4.0'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.4.0'
-    compile project(':refresh-footer')
-    compile project(':refresh-header')
-    compile project(':refresh-layout')
+    compile 'com.scwang.smartrefresh:SmartRefreshLayout:1.0.4'
+    //    compile 'com.scwang.smartrefresh:SmartRefreshHeader:1.0.4'//没有使用特殊Header，可以不加这行
     compile 'com.android.support:design:26.0.0-alpha1'
     compile 'com.android.support:recyclerview-v7:26.0.0-alpha1'
     compile files('libs/glide-3.6.1.jar')
     compile 'com.ashokvarma.android:bottom-navigation-bar:1.4.1'
-
     compile 'com.zhy:autolayout:1.4.5'
     compile 'org.greenrobot:eventbus:3.0.0'
+    compile "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation 'com.android.support:cardview-v7:28.0.0-alpha1'
+    implementation 'de.hdodenhof:circleimageview:2.2.0'
 }
+repositories {
+    mavenCentral()
+}
+
+apply plugin: 'kotlin-android-extensions'
