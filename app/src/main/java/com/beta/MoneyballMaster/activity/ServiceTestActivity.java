@@ -25,7 +25,7 @@ public class ServiceTestActivity extends BaseActivity{
 
     @Override
     protected void initLayout() {
-        MyLog.debug(TAG,"[initLayout] path:"+ SDCardUtil.getSavePath());
+        MyLog.INSTANCE.debug(TAG,"[initLayout] path:"+ SDCardUtil.INSTANCE.getSavePath());
     }
 
     public void onClick(View view){

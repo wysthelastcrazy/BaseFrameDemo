@@ -40,7 +40,7 @@ public class ViewPagerFragment extends BaseFragment{
         mLayoutManager.setOnViewPagerListener(new OnViewPagerListener() {
             @Override
             public void onPageRelease(boolean isNext, int position) {
-                MyLog.debug(TAG,"释放位置:"+position +" 下一页:"+isNext);
+                MyLog.INSTANCE.debug(TAG,"释放位置:"+position +" 下一页:"+isNext);
                 int index=0;
                 if (isNext){
                     index=0;
@@ -52,13 +52,13 @@ public class ViewPagerFragment extends BaseFragment{
 
             @Override
             public void onPageSelected(int position, boolean isBottom) {
-                MyLog.debug(TAG,"选中位置:"+position+"  是否是滑动到底部:"+isBottom);
+                MyLog.INSTANCE.debug(TAG,"选中位置:"+position+"  是否是滑动到底部:"+isBottom);
                 playVideo(0);
             }
 
             @Override
             public void onLayoutComplete() {
-                MyLog.debug(TAG,"[onLayoutComplete]=====");
+                MyLog.INSTANCE.debug(TAG,"[onLayoutComplete]=====");
             }
         });
         mRecyclerView.setLayoutManager(mLayoutManager);

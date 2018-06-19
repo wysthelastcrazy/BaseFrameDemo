@@ -150,7 +150,7 @@ public class CustomLayoutManager extends RecyclerView.LayoutManager{
         //列表向下滚动dy为正，列表向上滚动dy为负，这点与Android坐标系保持一致
         //实际要滑动的距离
         int travel = dy;
-        MyLog.debug("dddd", "[scrollVerticallyBy] dy=" + dy);
+        MyLog.INSTANCE.debug("dddd", "[scrollVerticallyBy] dy=" + dy);
         //如果滑动到最顶部
         if (verticalScrollOffset + dy < 0) {
             travel = -verticalScrollOffset;
@@ -246,7 +246,7 @@ public class CustomLayoutManager extends RecyclerView.LayoutManager{
                 itemStates.put(i,true);
             }
         }
-        MyLog.debug("ddddd","[recycleAndFillView]  itemCount:"+getItemCount()+"     childCount:"+getChildCount());
+        MyLog.INSTANCE.debug("ddddd","[recycleAndFillView]  itemCount:"+getItemCount()+"     childCount:"+getChildCount());
     }
     /***=========================缓存并重用ItemView End===============================================***/
 

@@ -171,7 +171,7 @@ public class RandomCodeView extends View{
             i=mRandom.nextInt(42)+48;
         }
         char tmp= (char) i;
-        MyLog.debug(TAG,"[getRandomText]  i:"+i+"   tmp:"+tmp);
+        MyLog.INSTANCE.debug(TAG,"[getRandomText]  i:"+i+"   tmp:"+tmp);
         return tmp;
     }
 

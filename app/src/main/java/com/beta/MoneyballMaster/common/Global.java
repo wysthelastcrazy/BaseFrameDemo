@@ -59,7 +59,7 @@ public class Global {
 				Global.PKG_VER = version;
 			}
 		} catch (NameNotFoundException e) {
-			MyLog.error(TAG, e);
+			MyLog.INSTANCE.error(TAG, e);
 		}
 	}
 	
@@ -136,7 +136,7 @@ public class Global {
 				MConfiger.CHANNEL_ID = val;
 			}
 		} catch (NameNotFoundException e) {
-			MyLog.error(TAG, e);
+			MyLog.INSTANCE.error(TAG, e);
 		}
 	}
 }

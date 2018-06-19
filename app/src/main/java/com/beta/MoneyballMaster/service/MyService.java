@@ -20,7 +20,7 @@ public class MyService extends Service {
     }
 
     private void methodInMyService(){
-        MyLog.debug("MyService","invokeMethodInMyService");
+        MyLog.INSTANCE.debug("MyService","invokeMethodInMyService");
     }
 
     private class MyBinder extends Binder implements IMyBinder{

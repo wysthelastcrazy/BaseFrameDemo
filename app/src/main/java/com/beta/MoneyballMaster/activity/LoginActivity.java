@@ -95,7 +95,7 @@ public class LoginActivity extends BaseActivity implements LoginContract.ILoginV
                 finish();
                 break;
             case R.id.btn_login:
-                MyLog.debug(TAG,"[onClick]  code:"+codeView.getRandomCode());
+                MyLog.INSTANCE.debug(TAG,"[onClick]  code:"+codeView.getRandomCode());
 
                 mLoginPresenter.login(etLoginUserName.getText().toString(), etLoginPwd.getText().toString());
                 break;

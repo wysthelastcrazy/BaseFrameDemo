@@ -11,10 +11,10 @@ import com.beta.MoneyballMaster.R;
 import com.beta.MoneyballMaster.adapter.base.BaseRecyclerAdapter;
 import com.beta.MoneyballMaster.adapter.base.BaseViewHolder;
 import com.beta.MoneyballMaster.entity.PViewPagerEntity;
+import com.beta.MoneyballMaster.utils.PkgUtil;
 
 import java.util.ArrayList;
 
-import static com.beta.MoneyballMaster.utils.PkgUtil.getPackageName;
 
 /**
  * Created by yas on 2018/6/6.
@@ -55,7 +55,7 @@ public class ViewPagerAdapter extends BaseRecyclerAdapter<ViewPagerAdapter.MyVie
         @Override
         public void setValues(PViewPagerEntity pViewPagerEntity) {
             img_thumb.setImageResource(pViewPagerEntity.imgRes);
-            videoView.setVideoURI(Uri.parse("android.resource://"+getPackageName()+"/"+ pViewPagerEntity.videoRes));
+            videoView.setVideoURI(Uri.parse("android.resource://"+ PkgUtil.INSTANCE.getPackageName()+"/"+ pViewPagerEntity.videoRes));
         }
     }
 }
